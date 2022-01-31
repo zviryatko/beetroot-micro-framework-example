@@ -1,0 +1,17 @@
+{
+    "name": "zviryatko/test-php-repo",
+    "require": {
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zviryatko\\TestPhpRepo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alex Davyskiba",
+            "email": "sanya.davyskiba@gmail.com"
+        }
+    ]
+}
