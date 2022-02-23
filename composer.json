@@ -1,17 +1,9 @@
 {
-    "name": "zviryatko/test-php-repo",
-    "require": {
-        "squizlabs/php_codesniffer": "^3.6"
-    },
+    "name": "zviryatko/beetroot-micro-framework-example",
     "autoload": {
         "psr-4": {
-            "Zviryatko\\TestPhpRepo\\": "src/"
+            "App\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Alex Davyskiba",
-            "email": "sanya.davyskiba@gmail.com"
-        }
-    ]
+    "require": {}
 }
