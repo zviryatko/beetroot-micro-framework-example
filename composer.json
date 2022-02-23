@@ -5,5 +5,9 @@
             "App\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "doctrine/orm": "^2.11",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.13"
+    }
 }

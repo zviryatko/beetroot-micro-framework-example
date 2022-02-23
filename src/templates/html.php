@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php print $content; ?>
-    <?php print $time; ?>
+    <hr>
+    <p><em>Page generated at <?php print $time; ?></em></p>
 </body>
 </html>
