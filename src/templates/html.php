@@ -7,8 +7,16 @@
     <title><?php print $title; ?></title>
 </head>
 <body>
-    <?php print $content; ?>
-    <hr>
-    <p><em>Page generated at <?php print $time; ?></em></p>
+<?php if (isset($messages)): ?>
+    <ul>
+        <?php foreach ($messages as $message) : ?>
+            <li><?php print htmlentities($message); ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php print $content; ?>
+<hr>
+<p><em>Page generated at <?php print $time; ?></em></p>
 </body>
 </html>

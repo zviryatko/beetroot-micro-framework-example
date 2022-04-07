@@ -2,18 +2,38 @@
 namespace App\Controllers;
 
 use App\Models\Todo;
+use App\Router;
+use App\Services\FlashMessenger;
+use Doctrine\ORM\EntityManagerInterface;
 
 class Todos extends AbstractController {
+
+    /**
+     * @var \Doctrine\ORM\EntityManagerInterface
+     */
+    private EntityManagerInterface $entityManager;
+    /**
+     * @var \App\Router
+     */
+    private Router $router;
+
+    public function __construct(EntityManagerInterface $entityManager, Router $router)
+    {
+        $this->entityManager = $entityManager;
+        $this->router = $router;
+    }
+
     public function view() {
         $vars = [];
-        $entityManager = getEntityManager();
         if (!empty($_POST)) {
             $todo = new Todo($_POST['name'], !empty($_POST['active']));
-            $entityManager->persist($todo);
-            $entityManager->flush();
-            $vars['new_todo'] = $todo;
+            $this->entityManager->persist($todo);
+            $this->entityManager->flush();
+            $this->messenger->addMessage(sprintf('New item added: %s', $todo->getName()));
+            header('Location: ' . $this->router->generateUrl(self::class));
+            exit;
         }
-        $todoRepository = $entityManager->getRepository(Todo::class);
+        $todoRepository = $this->entityManager->getRepository(Todo::class);
         $vars['items'] = $todoRepository->findAll();
         $content = $this->viewTemplate('todos', $vars);
         $title = 'Todo list';

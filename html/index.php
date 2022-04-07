@@ -1,11 +1,9 @@
-<?php 
+<?php
 
 require_once '../vendor/autoload.php';
-require_once '../bootstrap.php';
 
-use \App\Router;
-
-$routes = require '../config/routes.php';
-$router = new Router($routes);
-$request_uri = $_SERVER['REQUEST_URI'];
-print $router->dispatch(parse_url($request_uri, PHP_URL_PATH));
+$app = new \App\App();
+$container = $app->initContainer();
+/** @var \App\Router $router */
+$router = $container->get(App\Router::class);
+print $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

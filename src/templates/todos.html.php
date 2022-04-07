@@ -6,10 +6,6 @@
     <input type="submit" value="Add todo" />
 </form>
 
-<?php if (isset($variables['new_todo'])): ?>
-    <p>New item added with id: <?php print $variables['new_todo']->getId(); ?></p>
-<?php endif; ?>
-
-<?php foreach ($variables['items'] as $item) : ?>
-    <p><?php print $item->getName(); ?>: <?php if ($item->isActive()): ?>+<?php endif; ?></p>
+<?php foreach ($items as $item) : ?>
+    <p><?php print $item->getName(); ?><?php if ($item->isActive()): ?> (active)<?php endif; ?></p>
 <?php endforeach; ?>
